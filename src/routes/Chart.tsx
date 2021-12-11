@@ -1,6 +1,7 @@
 import { useQuery } from "react-query";
 import { fetchCoinHistory } from "../api";
 import ApexChart from "react-apexcharts";
+import styled from "styled-components";
 
 interface IHistorical {
   time_open: string;
@@ -17,6 +18,15 @@ interface CharProps {
   coinId: string;
 }
 
+const HeaderChart = styled.span`
+  font-size: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  color: white;
+`;
+
 function Chart({ coinId }: CharProps) {
   const { isLoading, data } = useQuery<IHistorical[]>(
     ["ohlcv", coinId],
@@ -26,11 +36,11 @@ function Chart({ coinId }: CharProps) {
     }
   );
 
-  // data?.map((price) => price.open),
   return (
     <div>
+      <HeaderChart>Chart</HeaderChart>
       {isLoading ? (
-        "Locading chart..."
+        "Loading chart..."
       ) : (
         <ApexChart
           type="candlestick"
@@ -45,7 +55,7 @@ function Chart({ coinId }: CharProps) {
           ]}
           options={{
             chart: {
-              height: 300,
+              height: 200,
               width: 500,
               toolbar: {
                 show: false,
@@ -54,10 +64,6 @@ function Chart({ coinId }: CharProps) {
               foreColor: "#fff",
             },
             grid: { show: false },
-            stroke: {
-              curve: "smooth",
-              width: 4,
-            },
             yaxis: {
               show: false,
             },
@@ -67,10 +73,19 @@ function Chart({ coinId }: CharProps) {
                 offsetX: 13,
               },
             },
+            plotOptions: {
+              candlestick: {
+                colors: {
+                  upward: "#097df8",
+                  downward: "#f70d04",
+                },
+              },
+            },
           }}
         />
       )}
     </div>
   );
 }
+
 export default Chart;

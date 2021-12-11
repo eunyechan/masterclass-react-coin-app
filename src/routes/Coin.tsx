@@ -38,7 +38,6 @@ const Header = styled.header`
   height: 15vh;
   display: flex;
   width: 100%;
-  /* justify-content: center; */
   align-items: center;
 `;
 
@@ -234,7 +233,7 @@ function Coin() {
 
           <Switch>
             <Route path={`/:coinId/price`}>
-              <Price />
+              <Price coinId={coinId} tickersData={tickersData} />
             </Route>
             <Route path={`/:coinId/chart`}>
               <Chart coinId={coinId} />
