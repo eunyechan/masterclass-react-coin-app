@@ -2,6 +2,9 @@ import { useQuery } from "react-query";
 import { fetchCoinHistory } from "../api";
 import ApexChart from "react-apexcharts";
 import styled from "styled-components";
+import { useRecoilValue } from "recoil";
+import { isDarkAtom } from "../atoms";
+import { darktheme, lighttheme } from "../theme";
 
 interface IHistorical {
   time_open: string;
@@ -18,16 +21,23 @@ interface CharProps {
   coinId: string;
 }
 
+const Container = styled.div`
+  display: block;
+  color: ${(props) => props.theme.textColor};
+`;
+
 const HeaderChart = styled.span`
   font-size: 26px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 20px 0;
-  color: white;
+  color: ${(props) => props.theme.textColor};
 `;
 
 function Chart({ coinId }: CharProps) {
+  const isDark = useRecoilValue(isDarkAtom);
+
   const { isLoading, data } = useQuery<IHistorical[]>(
     ["ohlcv", coinId],
     () => fetchCoinHistory(coinId),
@@ -37,7 +47,7 @@ function Chart({ coinId }: CharProps) {
   );
 
   return (
-    <div>
+    <Container>
       <HeaderChart>Chart</HeaderChart>
       {isLoading ? (
         "Loading chart..."
@@ -55,13 +65,14 @@ function Chart({ coinId }: CharProps) {
           ]}
           options={{
             chart: {
-              height: 200,
+              height: 150,
               width: 500,
               toolbar: {
                 show: false,
               },
-              background: "transparent",
-              foreColor: "#fff",
+            },
+            theme: {
+              mode: isDark ? "dark" : "light",
             },
             grid: { show: false },
             yaxis: {
@@ -84,7 +95,7 @@ function Chart({ coinId }: CharProps) {
           }}
         />
       )}
-    </div>
+    </Container>
   );
 }
 

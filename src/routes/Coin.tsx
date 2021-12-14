@@ -32,6 +32,7 @@ const Container = styled.div`
   padding: 0px 20px;
   max-width: 480px;
   margin: 0 auto;
+  overflow: hidden;
 `;
 
 const Header = styled.header`
@@ -39,14 +40,16 @@ const Header = styled.header`
   display: flex;
   width: 100%;
   align-items: center;
+  margin-bottom: 20px;
 `;
 
 const Overview = styled.div`
   display: flex;
   justify-content: space-between;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: ${(props) => props.theme.accentColor};
   padding: 10px 20px;
   border-radius: 10px;
+  margin-bottom: 30px;
 `;
 const OverviewItem = styled.div`
   display: flex;
@@ -74,6 +77,8 @@ const Button = styled.button`
   width: 60px;
   height: 60px;
   font-size: 18px;
+  padding: 0px;
+  margin: 0px;
   background-color: ${(props) => props.theme.bgColor};
   border-radius: 50%;
   color: ${(props) => props.theme.accentColor};
@@ -184,7 +189,19 @@ function Coin() {
 
       <Header>
         <Button>
-          <Link to={"/"}>←</Link>
+          <Link
+            style={{
+              width: "100%",
+              height: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              textAlign: "center",
+            }}
+            to={"/"}
+          >
+            ←
+          </Link>
         </Button>
 
         <Title>

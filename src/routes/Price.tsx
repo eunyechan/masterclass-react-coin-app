@@ -12,7 +12,7 @@ const HeaderPrice = styled.span`
   justify-content: center;
   align-items: center;
   margin: 20px 0;
-  color: white;
+  color: ${(props) => props.theme.textColor};
 `;
 
 const Titlebox = styled.div`
@@ -82,7 +82,7 @@ function Price({ coinId, tickersData }: PriceProps) {
     <Container>
       <HeaderPrice>Price</HeaderPrice>
       {isLoading ? (
-        "Loading Price..."
+        "Loading price..."
       ) : (
         <>
           <Titlebox>
