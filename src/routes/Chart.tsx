@@ -1,6 +1,10 @@
 import { useQuery } from "react-query";
 import { fetchCoinHistory } from "../api";
 import ApexChart from "react-apexcharts";
+import styled from "styled-components";
+import { useRecoilValue } from "recoil";
+import { isDarkAtom } from "../atoms";
+import { darktheme, lighttheme } from "../theme";
 
 interface IHistorical {
   time_open: string;
@@ -17,7 +21,23 @@ interface CharProps {
   coinId: string;
 }
 
+const Container = styled.div`
+  display: block;
+  color: ${(props) => props.theme.textColor};
+`;
+
+const HeaderChart = styled.span`
+  font-size: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  color: ${(props) => props.theme.textColor};
+`;
+
 function Chart({ coinId }: CharProps) {
+  const isDark = useRecoilValue(isDarkAtom);
+
   const { isLoading, data } = useQuery<IHistorical[]>(
     ["ohlcv", coinId],
     () => fetchCoinHistory(coinId),
@@ -26,11 +46,11 @@ function Chart({ coinId }: CharProps) {
     }
   );
 
-  // data?.map((price) => price.open),
   return (
-    <div>
+    <Container>
+      <HeaderChart>Chart</HeaderChart>
       {isLoading ? (
-        "Locading chart..."
+        "Loading chart..."
       ) : (
         <ApexChart
           type="candlestick"
@@ -45,19 +65,16 @@ function Chart({ coinId }: CharProps) {
           ]}
           options={{
             chart: {
-              height: 300,
+              height: 150,
               width: 500,
               toolbar: {
                 show: false,
               },
-              background: "transparent",
-              foreColor: "#fff",
+            },
+            theme: {
+              mode: isDark ? "dark" : "light",
             },
             grid: { show: false },
-            stroke: {
-              curve: "smooth",
-              width: 4,
-            },
             yaxis: {
               show: false,
             },
@@ -67,10 +84,19 @@ function Chart({ coinId }: CharProps) {
                 offsetX: 13,
               },
             },
+            plotOptions: {
+              candlestick: {
+                colors: {
+                  upward: "#097df8",
+                  downward: "#f70d04",
+                },
+              },
+            },
           }}
         />
       )}
-    </div>
+    </Container>
   );
 }
+
 export default Chart;
