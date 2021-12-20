@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.js": "/https//:eunyechan.github.io/masterclass-react-coin-app/static/js/main.6b853fb6.chunk.js",
-    "main.js.map": "/https//:eunyechan.github.io/masterclass-react-coin-app/static/js/main.6b853fb6.chunk.js.map",
-    "runtime-main.js": "/https//:eunyechan.github.io/masterclass-react-coin-app/static/js/runtime-main.a22dc898.js",
-    "runtime-main.js.map": "/https//:eunyechan.github.io/masterclass-react-coin-app/static/js/runtime-main.a22dc898.js.map",
-    "static/js/2.a51819d2.chunk.js": "/https//:eunyechan.github.io/masterclass-react-coin-app/static/js/2.a51819d2.chunk.js",
-    "static/js/2.a51819d2.chunk.js.map": "/https//:eunyechan.github.io/masterclass-react-coin-app/static/js/2.a51819d2.chunk.js.map",
-    "index.html": "/https//:eunyechan.github.io/masterclass-react-coin-app/index.html",
-    "static/js/2.a51819d2.chunk.js.LICENSE.txt": "/https//:eunyechan.github.io/masterclass-react-coin-app/static/js/2.a51819d2.chunk.js.LICENSE.txt"
+    "main.js": "/masterclass-react-coin-app/static/js/main.203542d2.chunk.js",
+    "main.js.map": "/masterclass-react-coin-app/static/js/main.203542d2.chunk.js.map",
+    "runtime-main.js": "/masterclass-react-coin-app/static/js/runtime-main.a85d8a49.js",
+    "runtime-main.js.map": "/masterclass-react-coin-app/static/js/runtime-main.a85d8a49.js.map",
+    "static/js/2.44125ba8.chunk.js": "/masterclass-react-coin-app/static/js/2.44125ba8.chunk.js",
+    "static/js/2.44125ba8.chunk.js.map": "/masterclass-react-coin-app/static/js/2.44125ba8.chunk.js.map",
+    "index.html": "/masterclass-react-coin-app/index.html",
+    "static/js/2.44125ba8.chunk.js.LICENSE.txt": "/masterclass-react-coin-app/static/js/2.44125ba8.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.a22dc898.js",
-    "static/js/2.a51819d2.chunk.js",
-    "static/js/main.6b853fb6.chunk.js"
+    "static/js/runtime-main.a85d8a49.js",
+    "static/js/2.44125ba8.chunk.js",
+    "static/js/main.203542d2.chunk.js"
   ]
 }
