@@ -129,7 +129,7 @@ interface InfoData {
   last_data_at: string;
 }
 
-interface PriceData {
+interface IPriceData {
   id: string;
   name: string;
   symbol: string;
@@ -172,13 +172,15 @@ function Coin() {
     ["info", coinId],
     () => fetchCoinInfo(coinId)
   );
-  const { isLoading: tickersLoading, data: tickersData } = useQuery<PriceData>(
+  const { isLoading: tickersLoading, data: tickersData } = useQuery<IPriceData>(
     ["tickers", coinId],
     () => fetchCoinTickers(coinId),
     {
-      refetchInterval: 5000,
+      refetchInterval: 10000,
     }
   );
+  // console.log(infoData);
+  console.log(tickersData);
   const loading = infoLoading || tickersLoading;
   return (
     <Container>
@@ -187,7 +189,6 @@ function Coin() {
           {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
         </title>
       </Helmet>
-
       <Header>
         <Button>
           <Link
@@ -204,7 +205,6 @@ function Coin() {
             ←
           </Link>
         </Button>
-
         <Title>
           {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
         </Title>
@@ -216,15 +216,15 @@ function Coin() {
         <>
           <Overview>
             <OverviewItem>
-              <span>Rank:</span>
+              <span>Rank</span>
               <span>{infoData?.rank}</span>
             </OverviewItem>
             <OverviewItem>
-              <span>Symbol:</span>
+              <span>Symbol</span>
               <span>${infoData?.symbol}</span>
             </OverviewItem>
             <OverviewItem>
-              <span>Pirce:</span>
+              <span>Pirce</span>
               <span>{tickersData?.quotes.USD.price.toFixed(4)}</span>
             </OverviewItem>
           </Overview>
