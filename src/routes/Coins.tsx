@@ -15,7 +15,7 @@ const Container = styled.div`
 const Header = styled.header`
   height: 15vh;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
 `;
 
@@ -35,9 +35,19 @@ const Coin = styled.li`
   }
   &:hover {
     a {
-      color: ${(props) => props.theme.accentColor};
+      color: ${(props) => props.theme.textColor};
     }
   }
+`;
+
+const Button = styled.button`
+  display: flex;
+  width: 40px
+  height: 40px
+  position:absolute;
+  background-color: transparent;
+  color: ${(props) => props.theme.accentColor}
+  border-radius: 50%;
 `;
 
 const Title = styled.h1`
@@ -76,8 +86,16 @@ function Coins() {
         <title>코인</title>
       </Helmet>
       <Header>
-        <Title>코인</Title>
-        <button onClick={toggleDarkAtom}>Toggle Mode</button>
+        <div
+          style={{
+            display: "flex",
+            marginRight: "100px",
+            marginLeft: "150px",
+          }}
+        >
+          <Title>코인</Title>
+        </div>
+        <Button onClick={toggleDarkAtom}>Toggle Mode</Button>
       </Header>
       {isLoading ? (
         <Loader>Loading...</Loader>

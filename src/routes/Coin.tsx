@@ -46,7 +46,7 @@ const Header = styled.header`
 const Overview = styled.div`
   display: flex;
   justify-content: space-between;
-  background-color: ${(props) => props.theme.accentColor};
+  background-color: ${(props) => props.theme.bgColor};
   padding: 10px 20px;
   border-radius: 10px;
   margin-bottom: 30px;
@@ -179,8 +179,6 @@ function Coin() {
       refetchInterval: 10000,
     }
   );
-  // console.log(infoData);
-  console.log(tickersData);
   const loading = infoLoading || tickersLoading;
   return (
     <Container>
