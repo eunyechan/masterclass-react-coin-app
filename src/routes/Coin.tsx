@@ -248,7 +248,6 @@ function Coin() {
               <Link to={`/${coinId}/price`}>Price</Link>
             </Tab>
           </Tabs>
-
           <Switch>
             <Route path={`/:coinId/price`}>
               <Price coinId={coinId} tickersData={tickersData} />
