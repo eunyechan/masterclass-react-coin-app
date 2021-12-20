@@ -128,6 +128,7 @@ interface InfoData {
   first_data_at: string;
   last_data_at: string;
 }
+
 interface PriceData {
   id: string;
   name: string;
@@ -224,7 +225,7 @@ function Coin() {
             </OverviewItem>
             <OverviewItem>
               <span>Pirce:</span>
-              <span>{tickersData?.quotes.USD.price}</span>
+              <span>{tickersData?.quotes.USD.price.toFixed(4)}</span>
             </OverviewItem>
           </Overview>
           <Description>{infoData?.description}</Description>
