@@ -4,7 +4,6 @@ import ApexChart from "react-apexcharts";
 import styled from "styled-components";
 import { useRecoilValue } from "recoil";
 import { isDarkAtom } from "../atoms";
-import { darktheme, lighttheme } from "../theme";
 
 interface IHistorical {
   time_open: string;

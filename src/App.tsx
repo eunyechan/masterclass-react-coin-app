@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
+import { createGlobalStyle, ThemeProvider } from "styled-components";
 import Router from "./Router";
 import { lighttheme, darktheme } from "./theme";
 import { ReactQueryDevtools } from "react-query/devtools";
@@ -66,19 +66,6 @@ a {
   text-decoration:none;
   color: inherit;
 }
-`;
-const Button = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: transparent;
-  position: absolute;
-  width: 70px;
-  height: 70px;
-  left: 900px;
-  top: 25px;
-  border-radius: 50%;
-  color: ${(props) => props.theme.accentColor};
 `;
 
 function App() {
